@@ -458,7 +458,7 @@ class Apilot(Plugin):
 
 
                 # Clothing Index,处理部分县区穿衣指数返回null
-                chuangyi_data = data.get('index', {}).get('chuangyi', {})
+                chuangyi_data = next((item for item in data.get('index', []) if item.get('type') == 'chuanyi_index'), {})
                 if chuangyi_data:
                     chuangyi_level = chuangyi_data.get('level', '未知')
                     chuangyi_content = chuangyi_data.get('content', '未知')
